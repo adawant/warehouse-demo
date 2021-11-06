@@ -21,8 +21,9 @@ public interface ProductMapper {
 
     ProductModel entityToModel(ProductEntity productEntity);
 
-    ProductResource modelToResource(ProductModel productModel);
+    List<ProductModel> entitiesToModel(Iterable<ProductEntity> productEntity);
 
-    List<ProductResource> modelsToResources(List<ProductModel> productModelList);
+
+    ProductResource modelToResource(ProductModel productModel);
 
 }

@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderModel {
+    private Long id;
     private List<ProductModel> products;
     private String buyerEmail;
     private Instant timestamp;

@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: warehouse-service
+  datasource:
+    url: jdbc:mariadb://localhost:3306/final_project
+    username: root
+    password: password
+  jpa:
+    #show-sql: true
+    generate-ddl: true
+    properties.hibernate.dialect: org.hibernate.dialect.MariaDBDialect
+    hibernate.ddl-auto: create

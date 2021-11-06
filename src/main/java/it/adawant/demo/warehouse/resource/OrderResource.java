@@ -1,7 +1,6 @@
 package it.adawant.demo.warehouse.resource;
 
 
-import it.adawant.demo.warehouse.model.ProductModel;
 import lombok.*;
 
 import java.math.BigDecimal;
@@ -15,7 +14,8 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderResource {
-    private List<String> productsId;
+    private Long id;
+    private List<Long> productsId;
     private String buyerEmail;
     private Instant timestamp;
     private BigDecimal total;
