@@ -1,6 +1,5 @@
 package it.adawant.demo.warehouse.utils;
 
-import it.adawant.demo.warehouse.utils.ObjectsUtils;
 import lombok.val;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;

@@ -1,8 +1,8 @@
 package it.adawant.demo.warehouse.command.product;
 
-import it.adawant.demo.warehouse.utils.BaseCommand;
 import it.adawant.demo.warehouse.model.ProductModel;
 import it.adawant.demo.warehouse.service.WarehouseService;
+import it.adawant.demo.warehouse.utils.BaseCommand;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

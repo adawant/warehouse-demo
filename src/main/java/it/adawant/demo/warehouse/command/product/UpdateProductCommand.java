@@ -1,12 +1,13 @@
 package it.adawant.demo.warehouse.command.product;
 
 
-import it.adawant.demo.warehouse.utils.BaseCommand;
 import it.adawant.demo.warehouse.dto.UpdateProductDto;
 import it.adawant.demo.warehouse.mapper.ProductMapper;
 import it.adawant.demo.warehouse.model.ProductModel;
 import it.adawant.demo.warehouse.service.WarehouseService;
+import it.adawant.demo.warehouse.utils.BaseCommand;
 import lombok.RequiredArgsConstructor;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -26,8 +27,8 @@ public class UpdateProductCommand implements BaseCommand<ProductModel> {
 
     @Override
     public ProductModel execute() {
-        return warehouseService.updateProduct(id,
-                productMapper.updateDtoToModel(updateProductDto)
-        );
+        val product = productMapper.updateDtoToModel(updateProductDto);
+        product.setId(id);
+        return warehouseService.updateProduct(product);
     }
 }

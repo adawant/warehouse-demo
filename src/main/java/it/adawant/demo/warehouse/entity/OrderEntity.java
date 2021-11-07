@@ -1,6 +1,5 @@
 package it.adawant.demo.warehouse.entity;
 
-import it.adawant.demo.warehouse.utils.AbstractEntity;
 import it.adawant.demo.warehouse.utils.BaseEntity;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
