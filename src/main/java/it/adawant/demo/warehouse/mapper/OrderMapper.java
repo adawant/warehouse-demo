@@ -11,10 +11,13 @@ import org.mapstruct.Mapping;
 public abstract class OrderMapper {
 
     @Mapping(target = "productsId", source = "products")
+    @Mapping(target = "total", expression = "java(orderModel.getTotal().stripTrailingZeros())")
     public abstract OrderResource modelToResource(OrderModel orderModel);
 
+    @Mapping(target = "total", expression = "java(orderModel.getTotal().stripTrailingZeros())")
     public abstract OrderEntity modelToEntity(OrderModel orderModel);
 
+    @Mapping(target = "total", expression = "java(orderEntity.getTotal().stripTrailingZeros())")
     public abstract OrderModel entityToModel(OrderEntity orderEntity);
 
     protected Long mapProductsToLong(ProductModel productModel) {

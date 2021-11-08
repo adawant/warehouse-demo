@@ -2,6 +2,7 @@ package it.adawant.demo.warehouse.controller;
 
 
 import it.adawant.demo.warehouse.command.order.CreateOrderCommand;
+import it.adawant.demo.warehouse.command.order.GetOrderByIdCommand;
 import it.adawant.demo.warehouse.command.order.GetOrdersCommand;
 import it.adawant.demo.warehouse.dto.CreateOrderDto;
 import it.adawant.demo.warehouse.mapper.OrderMapper;
@@ -40,6 +41,17 @@ public class OrdersController extends PagedController {
         log.debug("Responding with created order: {}", orderResource);
         return ResponseEntity.ok(orderResource);
     }
+
+    @GetMapping("/{id}")
+    private ResponseEntity<OrderResource> getOrderById(@PathVariable Long id) {
+        log.debug("Received getOrderById request: {}", id);
+        val command = beanFactory.getBean(GetOrderByIdCommand.class, id);
+        val order = command.execute();
+        val orderResource = orderMapper.modelToResource(order);
+        log.debug("Responding with order {}", orderResource);
+        return ResponseEntity.ok(orderResource);
+    }
+
 
     @GetMapping
     private ResponseEntity<Iterable<OrderResource>> getOrders(

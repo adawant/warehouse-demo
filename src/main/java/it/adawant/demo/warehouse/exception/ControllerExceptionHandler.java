@@ -28,4 +28,11 @@ public class ControllerExceptionHandler
         return handleExceptionInternal(ex, null,
                 new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
     }
+
+    @ExceptionHandler(value = {IllegalArgumentException.class})
+    private ResponseEntity<Object> handleIllegalArgument(
+            RuntimeException ex, WebRequest request) {
+        return handleExceptionInternal(ex, null,
+                new HttpHeaders(), HttpStatus.BAD_REQUEST, request);
+    }
 }

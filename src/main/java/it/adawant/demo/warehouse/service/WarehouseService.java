@@ -12,6 +12,8 @@ public interface WarehouseService {
 
     OrderModel createOrder(OrderModel orderModel);
 
+    OrderModel getOrderById(Long id);
+
     Page<OrderModel> getOrders(Pageable pageable);
 
     ProductModel createProduct(ProductModel productModel);

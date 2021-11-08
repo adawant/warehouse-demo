@@ -27,6 +27,9 @@ public class UpdateProductCommand implements BaseCommand<ProductModel> {
 
     @Override
     public ProductModel execute() {
+        if (updateProductDto.getPrice() == null && updateProductDto.getName() == null)
+            throw new IllegalArgumentException("No update properties provided!");
+
         val product = productMapper.updateDtoToModel(updateProductDto);
         product.setId(id);
         return warehouseService.updateProduct(product);

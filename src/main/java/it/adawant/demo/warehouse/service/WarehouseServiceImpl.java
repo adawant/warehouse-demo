@@ -31,33 +31,6 @@ public class WarehouseServiceImpl implements WarehouseService {
     private final ProductMapper productMapper;
 
     @Override
-    public OrderModel createOrder(OrderModel orderModel) {
-        log.info("Creating order placed by {} at {} with products: {}",
-                orderModel.getBuyerEmail(), orderModel.getTimestamp(), orderModel.getProducts());
-
-        val sum = orderModel.getProducts()
-                .stream().map(ProductModel::getPrice).
-                reduce(BigDecimal.ZERO, BigDecimal::add);
-        orderModel.setTotal(sum);
-
-        var orderEntity = orderMapper.modelToEntity(orderModel);
-        orderEntity = orderRepository.save(orderEntity);
-
-        log.info("Order {} with a total of {}, placed by {}, created",
-                orderEntity.getId(), orderEntity.getTotal(), orderEntity.getBuyerEmail());
-
-        return orderMapper.entityToModel(orderEntity);
-    }
-
-    @Override
-    public Page<OrderModel> getOrders(Pageable pageable) {
-        log.info("Retrieving all orders");
-        val entities = orderRepository.findAll(pageable);
-        log.info("Retrieved {} orders", entities.getTotalElements());
-        return entities.map(orderMapper::entityToModel);
-    }
-
-    @Override
     public ProductModel createProduct(ProductModel productModel) {
         log.info("Creating product {} at price {}", productModel.getName(), productModel.getPrice());
         var productEntity = productMapper.modelToEntity(productModel);
@@ -112,5 +85,40 @@ public class WarehouseServiceImpl implements WarehouseService {
         productRepository.save(entity);
         log.info("Product {} updated", productModel.getId());
         return productMapper.entityToModel(entity);
+    }
+
+
+    @Override
+    public OrderModel createOrder(OrderModel orderModel) {
+        log.info("Creating order placed by {} at {} with products: {}",
+                orderModel.getBuyerEmail(), orderModel.getTimestamp(), orderModel.getProducts());
+
+        val sum = orderModel.getProducts()
+                .stream().map(ProductModel::getPrice).
+                reduce(BigDecimal.ZERO, BigDecimal::add);
+        orderModel.setTotal(sum);
+
+        var orderEntity = orderMapper.modelToEntity(orderModel);
+        orderEntity = orderRepository.save(orderEntity);
+
+        log.info("Order {} with a total of {}, placed by {}, created",
+                orderEntity.getId(), orderEntity.getTotal(), orderEntity.getBuyerEmail());
+
+        return orderMapper.entityToModel(orderEntity);
+    }
+
+    @Override
+    public OrderModel getOrderById(Long id) {
+        log.info("Retrieving order {}", id);
+        val entity = orderRepository.findById(id).orElseThrow();
+        return orderMapper.entityToModel(entity);
+    }
+
+    @Override
+    public Page<OrderModel> getOrders(Pageable pageable) {
+        log.info("Retrieving all orders");
+        val entities = orderRepository.findAll(pageable);
+        log.info("Retrieved {} orders", entities.getTotalElements());
+        return entities.map(orderMapper::entityToModel);
     }
 }
