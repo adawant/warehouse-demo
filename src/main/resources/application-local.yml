@@ -1,10 +1,1 @@
-spring:
-  datasource:
-    url: jdbc:h2:mem:mydb
-    driverClassName: org.h2.Driver
-  jpa:
-    properties.hibernate.dialect: org.hibernate.dialect.H2Dialect
-
-logging:
-  level:
-    it.adawant: DEBUG
+DB_URL: localhost

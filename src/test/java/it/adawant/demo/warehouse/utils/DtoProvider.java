@@ -2,7 +2,6 @@ package it.adawant.demo.warehouse.utils;
 
 import it.adawant.demo.warehouse.dto.CreateOrderDto;
 import it.adawant.demo.warehouse.dto.CreateProductDto;
-import it.adawant.demo.warehouse.dto.UpdateProductDto;
 
 import java.math.BigDecimal;
 import java.time.Instant;

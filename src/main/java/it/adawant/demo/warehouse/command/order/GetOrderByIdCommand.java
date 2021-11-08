@@ -1,7 +1,6 @@
 package it.adawant.demo.warehouse.command.order;
 
 import it.adawant.demo.warehouse.model.OrderModel;
-import it.adawant.demo.warehouse.model.ProductModel;
 import it.adawant.demo.warehouse.service.WarehouseService;
 import it.adawant.demo.warehouse.utils.BaseCommand;
 import lombok.RequiredArgsConstructor;

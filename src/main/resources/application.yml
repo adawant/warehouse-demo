@@ -2,9 +2,9 @@ spring:
   application:
     name: warehouse-service
   datasource:
-    url: jdbc:mariadb://localhost:3306/final_project
+    url: jdbc:mariadb://${DB_URL:db}:3306/warehouse
     username: root
-    password: password
+    password: pw
   jpa:
     #show-sql: true
     generate-ddl: true
